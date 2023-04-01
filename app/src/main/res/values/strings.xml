@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DataBaseSample</string>
+    <string name="patients_btn_text">Patients</string>
+    <string name="tests_btn_text">Tests</string>
+    <string name="logout_btn_text">Logout</string>
+    <string name="login_title">Login</string>
+    <string name="nurse_id_hint">Nurse Id</string>
+    <string name="password_hint">Password</string>
+    <string name="login_btn_text">Login</string>
+    <string name="add_test">Add Test</string>
+</resources>
