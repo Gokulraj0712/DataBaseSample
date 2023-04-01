@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(entities = [PatientEntitiy::class, NurseEntity::class,TestEntitiy::class], version = 1)
 abstract class HospitalDatabase:RoomDatabase() {
@@ -31,7 +33,6 @@ abstract class HospitalDatabase:RoomDatabase() {
             }
         }
     }
-
 
 
 }

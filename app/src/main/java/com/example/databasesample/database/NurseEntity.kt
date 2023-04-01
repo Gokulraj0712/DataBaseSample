@@ -7,10 +7,10 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "NurseTable")
 data class NurseEntity (
 
-    @PrimaryKey val nurseId : String,
-    @ColumnInfo(name = "firstname") val firstname:String,
-    @ColumnInfo(name = "lastname") val lastname:String,
-    @ColumnInfo(name = "department") val department:String,
-    @ColumnInfo(name = "password") val password:String
+    @PrimaryKey(autoGenerate = true) val nurseId : Int?,
+    @ColumnInfo(name = "firstname") val firstname:String?,
+    @ColumnInfo(name = "lastname") val lastname:String?,
+    @ColumnInfo(name = "department") val department:String?,
+    @ColumnInfo(name = "password") val password:String?
 
         )

@@ -1,5 +1,6 @@
 package com.example.databasesample.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -17,27 +18,28 @@ interface PatientDao {
     @Query("""
        SELECT * FROM PatientTable
     """)
-    suspend fun getPatientList(): List<PatientEntitiy>
+    fun getPatientList(): LiveData<List<PatientEntitiy>>
 
 
     @Query("""
         SELECT * FROM PatientTable
-        WHERE patientId = :patientId
+        WHERE patientId LIKE :patid LIMIT 1
     """)
-    suspend fun getPatientById(patientId: String): PatientEntitiy
+    fun getPatientById(patid: Int): LiveData<PatientEntitiy>
 
     @Query("""
         UPDATE PatientTable
         SET firstname = :firstname, lastname = :lastname, room = :room, department = :department
         WHERE patientId = :patientId;
     """)
-    suspend fun updatePatientEntity(patientId: String, firstname: String, lastname: String, room: String, department: String)
+    suspend fun updatePatientEntity(patientId: Int, firstname: String, lastname: String, room: String, department: String): Int
+
 
     @Query("""
         DELETE FROM PatientTable
         WHERE patientId = :patientId
     """)
-    suspend fun deletePatientEntity(patientId: String)
+    suspend fun deletePatientEntity(patientId: Int):Int
 
 
 }

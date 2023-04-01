@@ -1,13 +1,11 @@
 package com.example.databasesample.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface NurseDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(nurseEntity: NurseEntity)
 
     @Query("SELECT * FROM NurseTable WHERE nurseId = :nurseId")
@@ -16,6 +14,11 @@ interface NurseDao {
     @Query("SELECT * FROM NurseTable WHERE nurseId = :nurseId AND password = :password")
     suspend fun login(nurseId: Int, password: String): NurseEntity
 
+    @Delete
+    suspend fun delete(nurseEntity: NurseEntity)
+
+    @Query("DELETE FROM NurseTable")
+    suspend fun deleteAll()
 
 
 }
