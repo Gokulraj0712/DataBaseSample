@@ -5,38 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
-    android:id="@+id/patient_item"
+    android:id="@+id/test_item"
     android:clickable="true">
 
     <TextView
-        android:id="@+id/tvPatientName"
-        android:text="@string/patient_name"
+        android:id="@+id/testId"
+        android:text="@string/test_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvPatientDepartment"
+        app:layout_constraintBottom_toTopOf="@+id/testBPL"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/tvPatientDepartment"
-        android:text="@string/patient_department"
+        android:id="@+id/testBPL"
+        android:text="@string/bpl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvPatientName"
+        app:layout_constraintBottom_toBottomOf="@+id/testId"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/tvPatientRoom"
-         />
+        app:layout_constraintBottom_toTopOf="@+id/testBPH"
+        />
 
     <TextView
-        android:id="@+id/tvPatientRoom"
-        android:text="@string/patient_room"
+        android:id="@+id/testBPH"
+        android:text="@string/bph"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/tvPatientName"
-         />
+        app:layout_constraintBottom_toBottomOf="@+id/testBPL"
+        app:layout_constraintBottom_toTopOf="@+id/testtemp"
+        />
+
+    <TextView
+        android:id="@+id/testtemp"
+        android:text="@string/temperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/testBPH"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

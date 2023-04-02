@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.MainActivity">
+    tools:context=".views.MainActivity"
+    android:background="@drawable/background">
 
     <Button
         android:id="@+id/startButton"
@@ -11,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Start"
         android:textSize="20sp"
+        android:theme="@style/ButtonStyle"
         android:layout_centerInParent="true"/>
 
 </RelativeLayout>

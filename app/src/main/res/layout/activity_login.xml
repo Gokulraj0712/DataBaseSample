@@ -5,45 +5,67 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@drawable/background"
     >
 
     <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login_title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
-
+        android:id="@+id/signin"
+        android:text="Sign in"
+        android:textColor="@color/white"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:layout_margin="50dp"
+        android:gravity="center"/>
     <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/etNurseId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_below="@id/signin"
+        android:background="#30ffffff"
         android:hint="@string/nurse_id_hint"
-        android:inputType="number" />
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:padding="20dp"
+        android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+        android:drawablePadding="20dp"/>
 
     <EditText
-        android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:id="@+id/etPassword"
+        android:background="#30ffffff"
         android:hint="@string/password_hint"
-        android:inputType="textPassword" />
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:padding="20dp"
+        android:drawableLeft="@drawable/ic_baseline_info_24"
+        android:drawablePadding="20dp"
+        android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:textSize="25dp"
+        android:theme="@style/ButtonStyle"
         android:text="@string/login_btn_text" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/registerText"
+        android:textSize="25dp"
+        android:layout_below="@id/btnLogin"
         android:text="@string/regsiter"
-        android:clickable="true" />
+        android:textColor="@color/white"
+        android:clickable="true"
+
+        android:layout_margin="20dp"/>
 
 </LinearLayout>

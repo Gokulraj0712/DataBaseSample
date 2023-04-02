@@ -1,5 +1,6 @@
 package com.example.databasesample.database
 
+import android.provider.Contacts.Intents.UI
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
@@ -10,7 +11,7 @@ import androidx.room.Query
 interface PatientDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun upsert(patientEntity: PatientEntitiy)
+    suspend fun insert(patientEntity: PatientEntitiy)
 
     @Insert
     suspend fun upsertAll(patientEntities: List<PatientEntitiy>)
@@ -25,7 +26,7 @@ interface PatientDao {
         SELECT * FROM PatientTable
         WHERE patientId LIKE :patid LIMIT 1
     """)
-    fun getPatientById(patid: Int): LiveData<PatientEntitiy>
+    fun getPatientById(patid: Int):PatientEntitiy
 
     @Query("""
         UPDATE PatientTable
@@ -40,6 +41,9 @@ interface PatientDao {
         WHERE patientId = :patientId
     """)
     suspend fun deletePatientEntity(patientId: Int):Int
+
+    @Query("SELECT * FROM PatientTable WHERE nurseId = :nurseId")
+    suspend fun getPatientsForNurse(nurseId: Int): List<PatientEntitiy>
 
 
 }

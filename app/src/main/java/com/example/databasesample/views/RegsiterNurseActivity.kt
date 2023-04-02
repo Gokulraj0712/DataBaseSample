@@ -21,7 +21,7 @@ class RegsiterNurseActivity: AppCompatActivity() {
         setContentView(binding.root)
         hospitalDatabase = HospitalDatabase.getDatabase(this)
 
-        binding.btnInsert.setOnClickListener{
+        binding.btnRegister.setOnClickListener{
             insertNurse()
             // Navigate to LoginActivity screen
             val intent = Intent(this@RegsiterNurseActivity, LoginActivity::class.java)
