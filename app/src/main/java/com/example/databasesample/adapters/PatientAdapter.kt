@@ -54,7 +54,7 @@ class PatientAdapter : RecyclerView.Adapter<PatientAdapter.PatientViewHolder>() 
                 val sharedPreferences = itemView.context.getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
 
                 // Add OnClickListener to the root view of the item layout
-                binding.root.setOnClickListener {
+                binding.cardView.setOnClickListener {
                     // Get the position of the clicked item
                     val position = adapterPosition
                     if (position != RecyclerView.NO_POSITION) {

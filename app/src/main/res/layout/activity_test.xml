@@ -24,6 +24,9 @@
             android:text="@string/add_test"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:theme="@style/ButtonStyle"
+            android:background="@drawable/button_shape"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

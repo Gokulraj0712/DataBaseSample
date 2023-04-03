@@ -32,7 +32,8 @@
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/testBPL"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/testBPL"
@@ -47,6 +48,7 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:padding="10dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/testId"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/testBPH"
@@ -68,6 +70,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/testBPL"
         app:layout_constraintBottom_toTopOf="@+id/testtemp"
+        android:textStyle="bold"
         />
 
     <TextView
@@ -85,6 +88,7 @@
         android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/testBPH"
+        android:textStyle="bold"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

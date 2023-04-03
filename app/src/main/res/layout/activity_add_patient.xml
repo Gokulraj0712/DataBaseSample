@@ -80,6 +80,7 @@
         android:layout_gravity="center_horizontal"
         android:textSize="25dp"
         android:theme="@style/ButtonStyle"
+        android:background="@drawable/button_shape"
         android:text="Save" />
 
     <Button
@@ -91,6 +92,7 @@
         android:layout_gravity="center_horizontal"
         android:textSize="25dp"
         android:theme="@style/ButtonStyle"
+        android:background="@drawable/button_shape"
         android:visibility="gone"/>
     <Button
         android:id="@+id/button_go_back"
@@ -100,6 +102,7 @@
         android:layout_gravity="center_horizontal"
         android:textSize="25dp"
         android:theme="@style/ButtonStyle"
+        android:background="@drawable/button_shape"
         android:text="BACK to patients list"
         />
 

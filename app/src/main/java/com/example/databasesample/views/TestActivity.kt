@@ -48,14 +48,15 @@ class TestActivity: AppCompatActivity() {
         // Check the source of the activity
         val source = intent.getStringExtra("source")
         println("TEST ACTIVITY" +source)
-        if (source == "UpdatePatientActivity" || source == null) {
-
-            // Load all tests for a specific nurse
-            loadTestsByNurseAndPatient(nurseId, patientId)
-        } else {
-           // Load tests for a specific patient and nurse
-            loadTestsByNurse(nurseId)
-
+        when(source) {
+            "UpdatePatientActivity" -> {
+                // Load tests for a specific patient and nurse
+                loadTestsByNurseAndPatient(nurseId, patientId)
+            }
+            else -> {
+                // Load all tests for a specific nurse
+                loadTestsByNurse(nurseId)
+            }
         }
 
         // Set up FAB click listener

@@ -100,6 +100,10 @@ class AddTestActivity:AppCompatActivity() {
                      patientid
 
                 )
+                val intent = Intent(this@AddTestActivity, TestActivity::class.java)
+                intent.putExtra("source", "UpdatePatientActivity")
+                startActivity(intent)
+                finish()
             }
             else
             {
@@ -111,6 +115,10 @@ class AddTestActivity:AppCompatActivity() {
                     nurse_id,
                      patient_ID.toInt()
                 )
+                val intent = Intent(this@AddTestActivity, TestActivity::class.java)
+                intent.putExtra("source", "TestActivity")
+                startActivity(intent)
+                finish()
             }
             GlobalScope.launch(Dispatchers.IO) {
 
@@ -125,9 +133,7 @@ class AddTestActivity:AppCompatActivity() {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(this@AddTestActivity, "TEST SAVED SUCCESSFULLY ", Toast.LENGTH_SHORT).show()
                     // Navigate to TestActivity screen
-                    val intent = Intent(this@AddTestActivity, TestActivity::class.java)
-                    startActivity(intent)
-                    finish()
+
                 }
             }
 

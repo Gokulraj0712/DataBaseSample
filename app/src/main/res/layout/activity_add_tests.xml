@@ -97,6 +97,7 @@
         android:layout_gravity="center_horizontal"
         android:textSize="25dp"
         android:theme="@style/ButtonStyle"
+        android:background="@drawable/button_shape"
         android:text="Save" />
 
 </LinearLayout>

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import com.example.databasesample.databinding.ActivityMainBinding
 
 
@@ -25,4 +26,16 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+    override fun onBackPressed() {
+        AlertDialog.Builder(this)
+            .setTitle("Exit App")
+            .setMessage("Are you sure you want to exit?")
+            .setPositiveButton("Yes") { _, _ ->
+                // If the user clicks "Yes", exit the app
+                finishAffinity()
+            }
+            .setNegativeButton("No", null)
+            .show()
+    }
+
 }
