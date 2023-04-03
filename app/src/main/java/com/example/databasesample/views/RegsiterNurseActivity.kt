@@ -51,10 +51,11 @@ class RegsiterNurseActivity: AppCompatActivity() {
             binding.etDepartment.text.clear()
             binding.etPassword.text.clear()
 
-            Toast.makeText(this,"Successfully written", Toast.LENGTH_SHORT).show()
+
+            Toast.makeText(this,"NURSE DETAILS SAVED SUCCESSFULLY ", Toast.LENGTH_SHORT).show()
         }
         else{
-            Toast.makeText(this,"PLease Enter Data",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"PLEASE ENTER FULL DATA",Toast.LENGTH_SHORT).show()
         }
 
 

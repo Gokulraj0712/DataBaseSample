@@ -36,6 +36,12 @@ class AddPatientActivity: AppCompatActivity() {
 
             insertPatient()
         }
+
+        binding.buttonGoBack.setOnClickListener {
+            val intent = Intent(this@AddPatientActivity, PatientActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun insertPatient()
@@ -62,7 +68,7 @@ class AddPatientActivity: AppCompatActivity() {
             binding.editTextDepartment.text.clear()
             binding.editTextroom.text.clear()
 
-            Toast.makeText(this,"Successfully written", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"PATIENT DETAILS SAVED SUCCESSFULLY ", Toast.LENGTH_SHORT).show()
             // Navigate to LoginActivity screen
             val intent = Intent(this@AddPatientActivity, PatientActivity::class.java)
             startActivity(intent)
@@ -70,7 +76,7 @@ class AddPatientActivity: AppCompatActivity() {
 
         }
         else{
-            Toast.makeText(this,"PLease Enter Data", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"PLEASE ENTER ALL DATA", Toast.LENGTH_SHORT).show()
         }
 
 

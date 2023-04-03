@@ -47,12 +47,15 @@ class TestActivity: AppCompatActivity() {
 
         // Check the source of the activity
         val source = intent.getStringExtra("source")
-        if (source == "PatientActivity") {
-            // Load tests for a specific patient and nurse
+        println("TEST ACTIVITY" +source)
+        if (source == "UpdatePatientActivity" || source == null) {
+
+            // Load all tests for a specific nurse
             loadTestsByNurseAndPatient(nurseId, patientId)
         } else {
-            // Load all tests for a specific nurse
+           // Load tests for a specific patient and nurse
             loadTestsByNurse(nurseId)
+
         }
 
         // Set up FAB click listener
@@ -72,7 +75,7 @@ class TestActivity: AppCompatActivity() {
         // Retrieve the list of patients for the specified nurse from the database
         lifecycleScope.launch {
             val tests = testDao.getTestByNurseId(nurseId)
-
+            println(" loadTestsByNurse")
             // Update the adapter with the new list of patients
             testAdapter.setData(tests as List<TestEntitiy>)
         }
@@ -88,7 +91,7 @@ class TestActivity: AppCompatActivity() {
         // Retrieve the list of patients for the specified nurse from the database
         lifecycleScope.launch {
             val tests = testDao.getTestsByNurseandPatient(nurseId,patientId)
-
+            println(" loadTestsByNurseAndPatient")
             // Update the adapter with the new list of patients
             testAdapter.setData(tests as List<TestEntitiy>)
         }
@@ -98,7 +101,7 @@ class TestActivity: AppCompatActivity() {
     override fun onBackPressed() {
         // Navigate to TestActivity screen
         val source = intent.getStringExtra("source")
-        val intent = if (source == "PatientActivity") {
+        val intent = if (source == "UpdatePatientActivity" || source==null) {
             Intent(this, PatientActivity::class.java)
         }
         else

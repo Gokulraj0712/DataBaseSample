@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -38,6 +39,8 @@ class AddTestActivity:AppCompatActivity() {
         sharedPreferences = getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
         val nurse = sharedPreferences.getInt(PREF_NURSE_ID, -1)
 
+        val patientId = sharedPreferences.getInt(PREF_PATIENT_ID, -1)
+        println("PAtientID: " +patientId)
 
         insertPatientName(this)
 
@@ -51,14 +54,28 @@ class AddTestActivity:AppCompatActivity() {
 
         val sharedPreferences = context.getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
         val patientId = sharedPreferences.getInt(PREF_PATIENT_ID, -1)
-        GlobalScope.launch(Dispatchers.Main) {
-            hospitalDatabase = HospitalDatabase.getDatabase(this@AddTestActivity)
-            val patient = withContext(Dispatchers.IO) {
-                hospitalDatabase.patientDao().getPatientById(patientId)
+
+        if (patientId != -1) {
+            GlobalScope.launch(Dispatchers.Main) {
+
+                hospitalDatabase = HospitalDatabase.getDatabase(this@AddTestActivity)
+                val patient = withContext(Dispatchers.IO) {
+                    hospitalDatabase.patientDao().getPatientById(patientId)
+                }
+                binding.editTextName.setText(patient.firstname + " " + patient.lastname)
+                insertPatientName(this@AddTestActivity)
             }
-            binding.editTextName.setText(patient.firstname + " " + patient.lastname)
-            insertPatientName(this@AddTestActivity)
         }
+        if(binding.editTextName.text.toString().isEmpty()) {
+            binding.editTextId.visibility = View.VISIBLE
+            binding.editTextName.visibility=View.GONE
+        }
+        else
+        {
+            binding.editTextId.visibility = View.GONE
+            binding.editTextName.visibility=View.VISIBLE
+            }
+
     }
 
      fun insertTest(binding: ActivityAddTestsBinding,context: Context)
@@ -67,14 +84,34 @@ class AddTestActivity:AppCompatActivity() {
         val bph = binding.editTextBph.text.toString()
         val temp = binding.editTextTemp.text.toString()
         val nurse_id = sharedPreferences.getInt(PREF_NURSE_ID, -1)
-        val patientId = sharedPreferences.getInt(PREF_PATIENT_ID, -1)
-
+        val patientid = sharedPreferences.getInt(PREF_PATIENT_ID, -1)
+        val patient_ID = binding.editTextId.text.toString()
+        val test: TestEntitiy?
 
         if(bpl.isNotEmpty() && bph.isNotEmpty() && temp.isNotEmpty())
         {
-            val test= TestEntitiy(
-                null, bpl.toDouble(),bph.toDouble(),temp.toDouble(),nurse_id,patientId
-            )
+            if(binding.editTextId.visibility==View.GONE) {
+                 test = TestEntitiy(
+                    null,
+                    bpl.toDouble(),
+                    bph.toDouble(),
+                    temp.toDouble(),
+                    nurse_id,
+                     patientid
+
+                )
+            }
+            else
+            {
+                 test = TestEntitiy(
+                    null,
+                    bpl.toDouble(),
+                    bph.toDouble(),
+                    temp.toDouble(),
+                    nurse_id,
+                     patient_ID.toInt()
+                )
+            }
             GlobalScope.launch(Dispatchers.IO) {
 
                 hospitalDatabase.testDao().upsert(test)
@@ -84,15 +121,19 @@ class AddTestActivity:AppCompatActivity() {
             binding.editTextBph.text.clear()
             binding.editTextTemp.text.clear()
 
-            Toast.makeText(this,"Successfully written", Toast.LENGTH_SHORT).show()
-            // Navigate to TestActivity screen
-            val intent = Intent(this@AddTestActivity, TestActivity::class.java)
-            startActivity(intent)
-            finish()
+            GlobalScope.launch(Dispatchers.IO) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@AddTestActivity, "TEST SAVED SUCCESSFULLY ", Toast.LENGTH_SHORT).show()
+                    // Navigate to TestActivity screen
+                    val intent = Intent(this@AddTestActivity, TestActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
 
         }
         else{
-            Toast.makeText(this,"PLease Enter Data", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"PLEASE ENTER ALL DATA", Toast.LENGTH_SHORT).show()
         }
 
 

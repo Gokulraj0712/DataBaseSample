@@ -5,7 +5,9 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background_card"
+    >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPatients"
@@ -24,7 +26,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_launcher_background" />
+        android:src="@drawable/ic_add"
+        />
 
 
 </RelativeLayout>

@@ -12,8 +12,8 @@
     <string name="patient_name">Patient Name:</string>
     <string name="patient_department">"Patient Department: "</string>
     <string name="patient_room">"Patient Room: "</string>
-    <string name="test_id">Test Id</string>
-    <string name="bpl">BPL</string>
-    <string name="bph">BPH</string>
-    <string name="temperature">Temperature</string>
+    <string name="test_id">Test Id: </string>
+    <string name="bpl">BPL: </string>
+    <string name="bph">BPH: </string>
+    <string name="temperature">Temperature: </string>
 </resources>

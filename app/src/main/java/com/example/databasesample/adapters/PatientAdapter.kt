@@ -9,6 +9,7 @@ import com.example.databasesample.R
 import com.example.databasesample.database.PatientEntitiy
 import com.example.databasesample.databinding.ItemPatientBinding
 import com.example.databasesample.views.TestActivity
+import com.example.databasesample.views.UpdatePatientActivity
 
 
 class PatientAdapter : RecyclerView.Adapter<PatientAdapter.PatientViewHolder>() {
@@ -60,17 +61,20 @@ class PatientAdapter : RecyclerView.Adapter<PatientAdapter.PatientViewHolder>() 
                         val patient = patients[position]
                         // Save the patient ID to shared preferences
 
-                        val patientId = patient.patientId?.toInt()
+                        val patientId = patient.patientId
                         val editor = sharedPreferences.edit()
+
                         if (patientId != null) {
                             editor.putInt(PREF_PATIENT_ID, patientId)
                         }
+                        else
+                            editor.putInt(PREF_PATIENT_ID, -1)
                         editor.apply()
 
 
                         // Launch the patient details activity and pass the patient ID
-                        val intent = Intent(itemView.context, TestActivity::class.java).apply {
-                            putExtra("source", "PatientActivity")
+                        val intent = Intent(itemView.context, UpdatePatientActivity::class.java).apply {
+                            putExtra("source", "UpdatePatientActivity")
                         }
                         itemView.context.startActivity(intent)
 

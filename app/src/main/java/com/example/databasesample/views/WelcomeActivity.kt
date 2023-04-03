@@ -1,6 +1,8 @@
 package com.example.databasesample.views
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 
@@ -26,7 +28,15 @@ class WelcomeActivity: AppCompatActivity() {
         }
 
         binding.btnTests.setOnClickListener{
+            val PREF_PATIENT_ID = "pref_patient_id"
+            lateinit var sharedPreferences: SharedPreferences
+            sharedPreferences = getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putInt(PREF_PATIENT_ID, -1)
+            editor.apply()
+
             // Navigate to TestActivity screen
+
             val intent = Intent(this, TestActivity::class.java).apply {
                 putExtra("source", "WelcomeActivity")
             }
